@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
+import { checkAdminPassword, getAdminPasswordFromHeaders } from '@/lib/auth';
 
 export async function PATCH(
   request: Request,
@@ -7,9 +8,9 @@ export async function PATCH(
 ) {
   try {
     const body = await request.json();
-    const adminPassword = request.headers.get('x-admin-password');
+    const password = getAdminPasswordFromHeaders(request.headers);
 
-    if (adminPassword !== process.env.ADMIN_PASSWORD) {
+    if (!password || !checkAdminPassword(password)) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
