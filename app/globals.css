@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1a73e8;
+  --success: #34a853;
+  --warning: #fbbc04;
+  --error: #ea4335;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
