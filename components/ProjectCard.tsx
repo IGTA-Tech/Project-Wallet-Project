@@ -13,21 +13,21 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
     <div
       onClick={onClick}
-      className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow cursor-pointer overflow-hidden"
+      className="bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden border border-gray-100 hover:border-primary hover:-translate-y-1 group animate-slideUp"
     >
       {/* Screenshot */}
       {project.screenshot_url ? (
-        <div className="relative w-full h-48 bg-gray-200">
+        <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
           <Image
             src={project.screenshot_url}
             alt={project.name}
             fill
-            className="object-cover"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
       ) : (
-        <div className="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-          <span className="text-6xl font-bold text-white">
+        <div className="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center group-hover:from-blue-600 group-hover:to-purple-700 transition-all duration-300">
+          <span className="text-6xl font-bold text-white group-hover:scale-110 transition-transform duration-300">
             {project.name[0].toUpperCase()}
           </span>
         </div>
@@ -76,8 +76,11 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         </div>
 
         {/* CTA */}
-        <button className="mt-4 w-full bg-primary text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-          View Project
+        <button className="mt-4 w-full bg-primary text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-all hover:shadow-lg flex items-center justify-center gap-2 group-hover:scale-[1.02]">
+          <span>View Project</span>
+          <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
         </button>
       </div>
     </div>
